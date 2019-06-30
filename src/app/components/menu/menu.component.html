@@ -1,1 +1,32 @@
-<p>menu works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a href="" class="navbar-brand">
+        <img src="../../../assets/Scribe-Logo.png" >
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" routerLinkActive="active" data-toggle="collapse"
+                data-target=".navbar-collapse" *ngIf="!loggedIn">
+                <a class="nav-link" routerLink="/home">Home</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" data-toggle="collapse"
+                data-target=".navbar-collapse" *ngIf="loggedIn">
+                <a class="nav-link" routerLink="/myblogs">My blogs</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item right" data-toggle="collapse" data-target=".navbar-collapse" *ngIf="!loggedIn" 
+                >
+                <button class="btn btn-outline-light px-5" (click)="loginClicked()">Login</button>
+            </li>
+            <li class="nav-item right" *ngIf="loggedIn" >
+                <a class="nav-link" [routerLink]="'/profile/' + user.uid">My Profile</a>
+            </li>
+            <li class="nav-item right" *ngIf="loggedIn" >
+                <a class="nav-link" routerLink="/" (click)="logout()">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>

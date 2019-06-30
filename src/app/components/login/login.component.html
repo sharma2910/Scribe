@@ -1,1 +1,43 @@
-<p>login works!</p>
+    <div class="row background">
+        <div class="offset-sm-4 col-sm-4">
+            <div class="card">
+                <div class="card-text text-center">
+                    <h5>Login</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+                        <div class="form-group">
+                            <input type="text" 
+                                   class="form-control" 
+                                   placeholder="Email"
+                                   [formControl]="myForm.controls['email']">
+                        </div>
+                        <div class="alert alert-danger" *ngIf="!myForm.controls['email'].valid && myForm.controls['email'].touched">
+                            Email Required
+                        </div>
+                        <div class="form-group">
+                            <input type="password" 
+                                   class="form-control"
+                                   placeholder="Password"
+                                   [formControl]="myForm.controls['password']">
+                        </div>
+                        <div class="alert alert-danger" *ngIf="!myForm.controls['password'].valid && myForm.controls['password'].touched">
+                            Password Must be longer than 8 characters
+                        </div>
+                        <button type="submit" class="btn btn-warning btn-block" routerLink="/myblogs">Login</button>
+                        <div class="alert alert-success" *ngIf="message.length > 0">
+                            {{message}}
+                        </div>
+                        <div class="alert alert-danger" *ngIf="userError">
+                            {{userError.message}}
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-link" routerLink="/signup">Don't Have an Account? Create One</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
